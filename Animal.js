@@ -1,194 +1,76 @@
-class Animals {
-  constructor(t, b) {
-    if (this.constructor === Animals) {
-    }
-    // this is a temperature classification based on 'cold-blooded' or 'warm-blooded'
-    this.temperature = t;
-    // this is a bone classification based on 'verterbrates' or 'invertebrates
-    this.bone = b;
-  }
-  eat() {
-    console.log("all animals eat");
+class AnimalGroup {
+  _animalGroup;
+
+  constructor(group) {
+    this._animalGroup = group.toLowerCase();
   }
 
-  growth() {
-    console.log("all animals grow");
-  }
-  info() {
-    console.log(
-      "This is a " + this.temperature + ", and also It is a " + this.bone
-    );
-  }
-  move() {
-    console.log("All animals move");
-  }
-}
-
-class Invertebrate extends Animals {
-  #isMulticelluar;
-  #hasExoskeleton;
-  #hasNoCellWall;
-  constructor(t, b, isMulticelluar, Exoskeleton, hasNoCellWall) {
-    super(t, b);
-    this.isMulticelluar = isMulticelluar;
-    this.Exoskeleton = Exoskeleton;
-    this.hasNoCellWall = hasNoCellWall;
-  }
-  properties() {
-    if ((this.#isMulticelluar = true)) {
-      console.log("invertebrates are multicellular");
+  setGroup(type) {
+    if (type !== this._animalGroup) {
+      console.log(`ERROR: Invalid Animal Group`);
     }
-    if ((this.#hasExoskeleton = true)) {
-      console.log("invertebrates have exoskeleton");
-    }
-    if ((this.#hasNoCellWall = true)) {
-      console.log("invertebrates has no cell wall");
-    }
-  }
-  getproperties() {
-    return this.properties;
-  }
-}
-
-const invertebrate = new Invertebrate();
-invertebrate.breathe();
-invertebrate.growth();
-invertebrate.reproduce();
-//invertebrate.properties();
-
-class Vertebrates extends Animals {
-  #hasJointedAppendages;
-  #isSegmented;
-  #isBilaterallySegmented;
-  #hasOpenCirculatorySystem;
-  constructor(
-    t,
-    b,
-    hasJointedAppendages,
-    isSegmented,
-    isBilaterallySegmented,
-    hasOpenCirculatorySystem
-  ) {
-    super(t, b);
-    this.#hasJointedAppendages = hasJointedAppendages;
-    this.#isSegmented = isSegmented;
-    this.#isBilaterallySegmented = isBilaterallySegmented;
-    this.#hasOpenCirculatorySystem = isBilaterallySegmented;
+    this._animalGroup;
   }
 
-  properties() {
-    if ((this.#hasJointedAppendages = true)) {
-      console.log("vertebrates has jointed Appendages");
-    }
-    if ((this.#isSegmented = true)) {
-      console.log("vertebrates are segmented");
-    }
-    if ((this.#isBilaterallySegmented = true)) {
-      console.log("vertebrates are bilaterlly segmented");
-    }
-    if ((this.#hasOpenCirculatorySystem = true)) {
-      console.log("vertebrates has open Circulatory system");
+  getGroup() {
+    return this._animalGroup;
+  }
+
+  animalGroup() {
+    if (this._animalGroup === "anthropoda") {
+      return `${this.name} belongs to the Anthropoda family.\nThey generally come without Backbones and\nThey are Cold-Blooded animal.`;
+    } else if (this._animalGroup === "fish") {
+      return `${this.name} belongs to the Fish family.\nThey generally come with Backbones and\nThey are Cold-Blooded animal.`;
+    } else if (this._animalGroup === "amphibia") {
+      return `${this.name} belongs to the Amphibia family.\nThey generally come with Backbones and\nThey are Cold-Blooded animal.`;
+    } else if (this._animalGroup === "reptiles") {
+      return `${this.name} belongs to the Reptiles family.\nThey generally come with Backbones and\nThey are Cold-Blooded animal.`;
+    } else if (this._animalGroup === "aves") {
+      return `${this.name} belongs to the Aves family.\nThey generally come with Backbones and\nThey are Warm-Blooded animal.`;
+    } else if (this._animalGroup === "mammals") {
+      return `${this.name} belongs to the Mammals family.\nThey generally come with Backbones and\nThey are Warm-Blooded animal.`;
+    } else {
+      return `Error: Expected an input with Valid animal group and an animal name`;
     }
   }
 }
 
-const vertebrates = new Vertebrates();
-vertebrates.properties();
-vertebrates.growth();
+class Animal extends AnimalGroup {
+  constructor(group, name) {
+    super(group);
+    this.name = name;
+  }
 
-class Antropoda extends Invertebrate {
-  constructor(t, b, coldblooded) {
-    super(t, b);
-    this.coldblooded = coldblooded;
+  hasBackboneOrNot() {
+    if (this._animalGroup !== "anthropoda") {
+      return `${this.name} has backbones`;
+    }
+    esle;
+    return `${this.name} has no backbones`;
   }
-  temp() {
-    console.log("anthropodas are cold-blooded and also invertebrates");
-  }
-  move() {
-    console.log("anthropoda flies");
+
+  isWarmOrColdBLooded() {
+    if (this._animalGroup === "aves" || this._animalGroup === "mammals") {
+      return `${this.name} is a warm-blooded animal`;
+    } else {
+      return `${this.name} is a cold-blooded animal`;
+    }
   }
 }
-const anthropoda = new Antropoda("cold-blooded", "invertebrates");
-//anthropoda.getproperties();
-anthropoda.info();
-anthropoda.temp();
-anthropoda.move();
+// }
 
-class Fish extends Vertebrates {
-  constructor(t, b) {
-    super(t, b);
-  }
-  temp() {
-    console.log("fish are cold-blooded and also vertebrates");
-  }
-  move() {
-    console.log("fishes swims");
-  }
-}
-const fish = new Fish();
+const cat = new Animal("Mammal");
 
-fish.temp();
-fish.move();
+console.log(cat);
+cat.setGroup("mammals");
+console.log(cat.animalGroup());
 
-class Amphibians extends Vertebrates {
-  constructor(t, b) {
-    super(t, b);
-  }
-  temp() {
-    console.log("Amphibians are cold-blooded and also vertebrates");
-  }
-  move() {
-    console.log("Amphibians moves by jumping");
-  }
-}
-const amphibians = new Amphibians();
-//amphibians.properties();
-amphibians.temp();
-amphibians.move();
+const fish = new Animal("Fish", "Fish");
 
-class Reptiles extends Vertebrates {
-  constructor(t, b) {
-    super(t, b);
-  }
-  temp() {
-    console.log("Reptiles are cold-blooded and also vertebrates");
-  }
-  move() {
-    console.log("Reptiles moves by crawling");
-  }
-}
-const reptile = new Reptiles();
-//reptile.properties();
-reptile.temp();
-reptile.move();
+console.log(fish);
+// fish.setGroup("aves");
 
-class Aves extends Vertebrates {
-  constructor(t, b) {
-    super(t, b);
-  }
-  temp() {
-    console.log("Aves are warm-blooded and also vertebrates");
-  }
-  move() {
-    console.log("Aves moves by flying");
-  }
-}
-const aves = new Aves();
-aves.temp();
-aves.move();
+console.log(fish.hasBackboneOrNot());
+console.log(fish.isWarmOrColdBLooded());
 
-class Mammals extends Vertebrates {
-  constructor(t, b) {
-    super(t, b);
-  }
-  temp() {
-    console.log("Mammals are warm-blooded and also vertebrates");
-  }
-  move() {
-    console.log("Mammals moves by walkings");
-  }
-}
-const mammals = new Mammals();
-//mammals.properties();
-mammals.temp();
-mammals.move();
+console.log(fish.animalGroup());
