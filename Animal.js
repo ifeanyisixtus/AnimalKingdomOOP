@@ -10,14 +10,9 @@ class Animals {
   eat() {
     console.log("all animals eat");
   }
-  reproduce() {
-    console.log("all animals gives birth to young ones");
-  }
+
   growth() {
     console.log("all animals grow");
-  }
-  breathe() {
-    console.log("all animals breathe through the nostrils");
   }
   info() {
     console.log(
@@ -131,7 +126,7 @@ class Fish extends Vertebrates {
   }
 }
 const fish = new Fish();
-//fish.properties();
+
 fish.temp();
 fish.move();
 
@@ -179,7 +174,6 @@ class Aves extends Vertebrates {
   }
 }
 const aves = new Aves();
-//aves.properties();
 aves.temp();
 aves.move();
 
