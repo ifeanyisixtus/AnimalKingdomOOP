@@ -74,3 +74,20 @@ console.log(fish.hasBackboneOrNot());
 console.log(fish.isWarmOrColdBLooded());
 
 console.log(fish.animalGroup());
+
+const eagle = new Animal("Aves", "eagle");
+console.log(eagle.hasBackboneOrNot());
+console.log(eagle.isWarmOrColdBLooded());
+
+console.log(eagle.animalGroup());
+
+const tortoise = new Animal("Reptile", "tortoise");
+console.log(tortoise.hasBackboneOrNot());
+console.log(tortoise.isWarmOrColdBLooded());
+
+console.log(tortoise.animalGroup());
+
+const frog = new Animal("Amphibia", "frog");
+console.log(frog.hasBackboneOrNot());
+console.log(frog.isWarmOrColdBLooded());
+console.log(frog.animalGroup());
