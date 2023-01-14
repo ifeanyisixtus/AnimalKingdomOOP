@@ -1,4 +1,4 @@
-class AnimalGroup {
+/*class AnimalGroup {
   _animalGroup;
 
   constructor(group) {
@@ -91,3 +91,21 @@ const frog = new Animal("Amphibia", "frog");
 console.log(frog.hasBackboneOrNot());
 console.log(frog.isWarmOrColdBLooded());
 console.log(frog.animalGroup());
+*/
+
+function VisaCardNumber(inputtxt) {
+  const cardno = /^4[0-9]{12}(?:[0-9]{3})?$/;
+  return cardno.test(inputtxt);
+}
+
+function validateVisaCardNumber(cardnumber) {
+  let cardType = "invalid card";
+  if (VisaCardNumber(cardnumber)) {
+    cardType = " valid visa card";
+  }
+  return cardType;
+}
+
+//console.log(VisaCardNumber);
+const valid = validateVisaCardNumber(4411111123237);
+console.log(valid);
